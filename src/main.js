@@ -5,15 +5,18 @@ import FastClick from 'fastclick'
 import Test from "./components/Test";
 import router from "./router"
 import store from "./store"
-import {AlertPlugin, ToastPlugin, WechatPlugin} from 'vux'
+import {AlertPlugin, ToastPlugin} from 'vux'
+// import {WechatPlugin} from 'vux'
 import axios from "./axios";
 Vue.use(AlertPlugin);
 Vue.use(ToastPlugin);
-Vue.use(WechatPlugin);
+// Vue.use(WechatPlugin);
 
+// 处理移动端 click 事件 300 毫秒延迟
 FastClick.attach(document.body);
 // 阻止启动生产提示
 Vue.config.productionTip = false;
+// Vue原型属性
 Vue.prototype.baseUrl = process.env.API_ROOT;
 Vue.prototype.$axios=axios;
 

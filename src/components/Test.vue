@@ -15,6 +15,8 @@
     <group>
       <cell title="title" value="value"></cell>
     </group>
+    <button @click="fenxiang">分享</button>
+
     <loading v-model="isLoading"></loading>
   </div>
 </template>
@@ -31,12 +33,12 @@
       Cell,
       Loading
     },
-    mounted() {
-      console.log(this.$wechat)
+    data: function() {
+      return {
+      }
     },
-    created() {
-      let wx = this.$wechat;
-
+    mounted() {
+      console.log(wx);
       this.$axios.get(this.baseUrl + 'v1/wx/config' + '?signUrl=' + window.location.href).then(data => {
         console.log(data);
         let config = {
@@ -45,9 +47,8 @@
           timestamp: data.data.timestamp,
           nonceStr: data.data.nonceStr,
           signature: data.data.signature,
-          jsApiList: ["onMenuShareTimeline", "updateAppMessageShareData"]
+          jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage"]
         };
-
         wx.config(config);
         wx.ready(() => {
           wx.onMenuShareAppMessage({
@@ -64,12 +65,26 @@
           console.log("error")
         });
       });
-
+    },
+    created() {
     },
     computed: {
       ...mapState({
         isLoading: state => state.vux.isLoading
       })
+    },
+    methods: {
+      fenxiang: function () {
+        wx.onMenuShareAppMessage({
+          title: 'Hello , my friend', // 分享标题
+          desc: '', // 分享描述
+          link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: '', // 分享图标
+          success: function () {
+            // 设置成功
+          }
+        });
+      }
     }
 
   }

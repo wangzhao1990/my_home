@@ -1,13 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Test from "../components/Test";
-// import Foo from "../components/Foo";
-// import Bar from "../components/Bar";
 
-Vue.use(Router)
 
 // 0. 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)
+Vue.use(Router)
 
 // 1. 定义 (路由) 组件。
 // 可以从其他文件 import 进来
@@ -33,28 +29,3 @@ const routes = [
 export default new Router({
   routes // (缩写) 相当于 routes: routes
 })
-//
-// export default new Router({
-//   routes: [
-//     // {
-//     //   path: '/',
-//     //   name: 'HelloWorld',
-//     //   component: HelloWorld
-//     // },
-//     // {
-//     //   path: '/',
-//     //   name: 'Test',
-//     //   component: Test
-//     // },
-//     {
-//       path: '/foo',
-//       name: 'Foo',
-//       component: Foo
-//     },
-//     {
-//       path: '/bar',
-//       name: 'Bar',
-//       component: Bar
-//     }
-//   ]
-// })
